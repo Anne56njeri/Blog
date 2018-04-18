@@ -7,20 +7,20 @@ from .forms import Subscribe_form
 from .. import db
 from flask import flash
 # Views
-@main.route('/')
+@main.route('/',methods = ["GET","POST"])
 def index():
-	title = 'Welcome to the personal blog app'
-    form = Subscribe_form
+
+    form = Subscribe_form()
     if form.validate_on_submit():
         subscriber=Subscribe(email =form.email.data,username=form.username.data)
         db.session.add(subscriber)
         db.session.commit()
-        mail_message("Welcome to the trendy T's blog","email/welcome_sub",subscriber.email,subscriber=subscriber)
+        mail_message("Welcome to the trendy T's blog","email/welcome_user",subscriber.email,subscriber=subscriber)
 
         return flash("Welcome new subscriber")
 
 
-    return render_template('index.html',title = title)
+    return render_template('index.html',subscribe_form = form )
 @main.route('/writers')
 @login_required
 def writers():
