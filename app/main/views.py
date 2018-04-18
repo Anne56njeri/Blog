@@ -7,7 +7,7 @@ from flask_login import login_required
 def index():
 	title = 'Welcome to the personal blog app'
 	return render_template('index.html',title = title)
-@main.route('/writers<uname>')
+@main.route('/writers')
 @login_required
 def writers():
     title = 'Welcome writer'
