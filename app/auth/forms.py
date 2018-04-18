@@ -1,5 +1,5 @@
 from  flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField
 from  wtforms.validators import Required,Email,EqualTo
 from ..models import Writer
 from wtforms import ValidationError
@@ -12,7 +12,7 @@ class Registration(FlaskForm):
     password = PasswordField('password',validators=[Required(),
     EqualTo('password_confirm',message ='Password must match')])
     password_confirm= PasswordField('confirm passwords',validators=[Required()])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('Register')
 
     def validate_email(self,data_field):
         if Writer.query.filter_by(email=data_field.data).first():
@@ -20,3 +20,8 @@ class Registration(FlaskForm):
     def validate_username(self,data_field):
         if Writer.query.filter_by(username = data_field.data).first():
             raise ValidationError('Sorry that user name is taken')
+class Login(FlaskForm):
+    email=StringField('Enter your email address',validators=[Required(),Email()])
+    password=PasswordField('Enter password',valiadtors=[Required()])
+    remember=BooleanField('Remember me')
+    submit=SubmitField('Sign in')
