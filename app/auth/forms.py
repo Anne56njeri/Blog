@@ -25,3 +25,6 @@ class Login(FlaskForm):
     password=PasswordField('Enter password',validators=[Required()])
     remember=BooleanField('Remember me')
     submit=SubmitField('Sign in')
+class Subscribe(FlaskForm):
+    name = StringField('Enter your first name',validators=[Required()])
+    email=StringField('Enter your email to recieve alerts ',validators=[Required(),Email()])

@@ -26,3 +26,7 @@ class Writer(UserMixin,db.Model):
     @login_manager.user_loader
     def load_user(user_id):
         return Writer.query.get(int(user_id))
+class Subscribe(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    username=db.Column(db.String(255))
+    email=db.Column(db.String(255),unique=True,index=True)
