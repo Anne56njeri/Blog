@@ -1,8 +1,8 @@
 from  flask_wtf import FlaskForm
-from wtfforms import StringField,PasswordField,SubmitField
-from  wtfforms.validators import Required,Email,EqualTo
+from wtforms import StringField,PasswordField,SubmitField
+from  wtforms.validators import Required,Email,EqualTo
 from ..models import Writer
-from wtfforms import ValidationError
+from wtforms import ValidationError
 '''
 we import the validators that help us ensure proper email structure is followed
 '''

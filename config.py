@@ -1,5 +1,5 @@
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maryanne:mustu.cat@localhost/personal'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maryanne:mustu.cat@localhost/blog'
 
 
 class ProdConfig(Config):
