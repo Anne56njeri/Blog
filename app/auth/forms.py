@@ -22,6 +22,6 @@ class Registration(FlaskForm):
             raise ValidationError('Sorry that user name is taken')
 class Login(FlaskForm):
     email=StringField('Enter your email address',validators=[Required(),Email()])
-    password=PasswordField('Enter password',valiadtors=[Required()])
+    password=PasswordField('Enter password',validators=[Required()])
     remember=BooleanField('Remember me')
     submit=SubmitField('Sign in')
