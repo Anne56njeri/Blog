@@ -38,14 +38,7 @@ class Post(db.Model):
     __tablename__='posts'
     id=db.Column(db.Integer,primary_key =True)
     post_id=db.Column(db.Integer)
-    username=db.Column(db.Integer,primary_key =True)
+    username=db.Column(db.String(255))
     post_title=db.Column(db.String(255))
     post_date=db.Column(db.DateTime,default=datetime.utcnow)
-
-    def save_post(self):
-        db.session.add(self)
-        db.session.commit()
-    def get_post(self):
-        posts = Post.query.filter_by(post_id=id).all()
-        return posts
-    
+    post=db.Column(db.String)

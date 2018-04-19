@@ -2,7 +2,7 @@ from  flask_wtf import FlaskForm
 from ..models import Subscribe
 from wtforms import ValidationError
 from  wtforms.validators import Required,Email
-from wtforms import StringField,PasswordField,SubmitField,BooleanField,DateTimeField,TextAreaField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,DateField,TextAreaField
 
 
 class Subscribe_form(FlaskForm):
@@ -18,6 +18,6 @@ class Subscribe_form(FlaskForm):
 class Post_form(FlaskForm):
     username=StringField('Enter your username writer...',validators=[Required()])
     post_title=StringField('Enter the title of the post',validators=[Required()])
-    date =DateTimeField('Enter the date',format='%m%d%y')
+    post_id=StringField('Enter post number',validators=[Required()])
     post =TextAreaField('Enter your post',validators=[Required()])
     Submit=SubmitField('Submit Post')
