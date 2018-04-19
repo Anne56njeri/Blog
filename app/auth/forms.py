@@ -1,5 +1,5 @@
 from  flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField,DateTimeField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,DateTimeField,TextAreaField
 from  wtforms.validators import Required,Email,EqualTo
 from ..models import Writer
 from wtforms import ValidationError
@@ -25,9 +25,3 @@ class Login(FlaskForm):
     password=PasswordField('Enter password',validators=[Required()])
     remember=BooleanField('Remember me')
     submit=SubmitField('Sign in')
-class Postform(FlaskForm):
-    username=StringField('Enter your username writer...',validators=[Required()])
-    post_title=StringField('Enter the title of the post',validators=[Required()])
-    date =DateTimeField('Enter the date',format='%m%d%y')
-    post =TextAreaField('Enter your post'validators=[Required()])
-    Submit=SubmitField('Submit Post')
