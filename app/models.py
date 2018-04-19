@@ -33,3 +33,10 @@ class Subscribe(db.Model):
     email=db.Column(db.String(255),unique=True,index=True)
     def __repr__(self):
         return f'User {self.username}'
+class Post(db.Model):
+    __tablename__='posts'
+    id=db.Column(db.Integer,primary_key =True)
+    post_title=db.Column(db.String(255))
+    post_date=db.Column(db.DateTime,default=datetime.utcnow)
+    def __repr__(self):
+        return f'User {self.username}'  

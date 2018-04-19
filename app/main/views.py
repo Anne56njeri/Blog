@@ -17,7 +17,8 @@ def index():
         db.session.commit()
         mail_message("Welcome to the trendy T's blog","email/welcome_user",subscriber.email,subscriber=subscriber)
 
-        return flash("Welcome new subscriber")
+        flash("Welcome new subscriber")
+        return redirect(url_for('main.index'))
 
 
     return render_template('index.html',subscribe_form = form )
