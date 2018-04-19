@@ -2,6 +2,7 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 class Writer(UserMixin,db.Model):
     __tablename__='writers'
@@ -36,7 +37,8 @@ class Subscribe(db.Model):
 class Post(db.Model):
     __tablename__='posts'
     id=db.Column(db.Integer,primary_key =True)
+    username=db.Column(db.Integer,primary_key =True)
     post_title=db.Column(db.String(255))
     post_date=db.Column(db.DateTime,default=datetime.utcnow)
     def __repr__(self):
-        return f'User {self.username}'  
+        return f'User {self.username}'
