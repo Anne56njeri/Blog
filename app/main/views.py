@@ -22,16 +22,18 @@ def index():
         return redirect(url_for('main.index'))
     return render_template('index.html',subscribe_form = form )
 
-@main.route('/writers')
+@main.route('/writers',methods=["GET","POST"])
 @login_required
+
 def writers():
     form =Post_form()
+
     if form.validate_on_submit():
         post=form.post.data
         title=form.title.data
         new_post =Post(post_id=post.id,username=username,post_title=title,post_date=post.date)
         new_post.save_post()
-        flash("succefully published")
-        return redirect(url_for('main.index') 
 
-    return render_template('write.html',title=title)
+        flash("succefully published")
+        return redirect(url_for('main.index'))
+    return render_template('write.html',post_form=form)
