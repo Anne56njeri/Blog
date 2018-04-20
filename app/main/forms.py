@@ -18,6 +18,5 @@ class Subscribe_form(FlaskForm):
 class Post_form(FlaskForm):
     username=StringField('Enter your username writer...',validators=[Required()])
     post_title=StringField('Enter the title of the post',validators=[Required()])
-    post_id=StringField('Enter post number',validators=[Required()])
     post =TextAreaField('Enter your post',validators=[Required()])
     Submit=SubmitField('Submit Post')

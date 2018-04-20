@@ -37,8 +37,9 @@ class Subscribe(db.Model):
 class Post(db.Model):
     __tablename__='posts'
     id=db.Column(db.Integer,primary_key =True)
-    post_id=db.Column(db.Integer)
     username=db.Column(db.String(255))
     post_title=db.Column(db.String(255))
     post_date=db.Column(db.DateTime,default=datetime.utcnow)
     post=db.Column(db.String)
+    def __repr__(self):
+        return f'Post{self.post_title}'

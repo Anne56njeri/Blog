@@ -1,7 +1,13 @@
+{% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'base.html' %}
+
+
 {% block content %}
 <h1>Hello welcome to the blog</h1>
+<ul>
+  {{macro.displayPost(posts)}}
+</ul>
 
 
 

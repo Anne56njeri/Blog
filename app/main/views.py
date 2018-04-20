@@ -20,7 +20,9 @@ def index():
 
         flash("Welcome new subscriber")
         return redirect(url_for('main.index'))
-    return render_template('index.html',subscribe_form = form )
+    posts=Post.query.all()
+
+    return render_template('index.html',subscribe_form = form,posts=posts)
 
 @main.route('/writers',methods=["GET","POST"])
 @login_required
@@ -29,11 +31,12 @@ def writers():
     form =Post_form()
 
     if form.validate_on_submit():
-        posts=Post(username=form.username.data,post_title=form.post_title.data,post=form.post.data,post_id=form.post_id.data)
+        posts=Post(username=form.username.data,post_title=form.post_title.data,post=form.post.data)
         db.session.add(posts)
         db.session.commit()
         flash("succefully published")
         return redirect(url_for('main.index'))
+
     return render_template('write.html',post_form=form)
 @main.route('/blogs/<int:id>')
 def blogs(id):
