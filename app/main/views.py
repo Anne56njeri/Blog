@@ -2,8 +2,8 @@ from flask import render_template,request,redirect,url_for
 from . import main
 from flask_login import login_required,current_user
 from ..email import mail_message
-from ..models import Subscribe,Post
-from .forms import Subscribe_form,Post_form
+from ..models import Subscribe,Post,Comments
+from .forms import Subscribe_form,Post_form,Comments_form
 from .. import db
 from flask import flash
 # Views
@@ -38,8 +38,18 @@ def writers():
         return redirect(url_for('main.index'))
 
     return render_template('write.html',post_form=form)
-@main.route('/blogs/<int:id>')
+@main.route('/blogs/<int:id>',methods=["GET","POST"])
 def blogs(id):
-    posts=Post.query.filter_by(id=id).first()
+    form=Comments_form()
 
-    return render_template("blogs/blog.html",posts=posts)
+    if form.validate_on_submit():
+        comments=Comments(username=form.username.data,comment=form.comment.data)
+        db.session.add(comments)
+        db.session.commit()
+        flash("comment added")
+        return redirect(url_for('main.index'))
+
+    posts=Post.query.filter_by(id=id).first()
+    comment=Comments.query.all()
+
+    return render_template("blogs/blog.html",posts=posts,comments_form=form,comment=comment)

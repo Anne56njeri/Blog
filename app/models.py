@@ -43,3 +43,8 @@ class Post(db.Model):
     post=db.Column(db.String)
     def __repr__(self):
         return f'Post{self.post_title}'
+class Comments(db.Model):
+    __tablename__='comments'
+    id=db.Column(db.Integer,primary_key=True)
+    username=db.Column(db.String(255))
+    comment=db.Column(db.String)

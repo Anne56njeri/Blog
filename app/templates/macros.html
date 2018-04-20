@@ -5,3 +5,9 @@
   <h3><a href="/blogs/{{post.id}}">{{post.post_title}}</a></h3>
   {% endfor %}
   {% endmacro %}
+
+  {% macro displayComments(comments_list) %}
+  {% for comment in comments_list %}
+  <p>{{comment.comment}}<p>
+    {% endfor %}
+    {% endmacro %}

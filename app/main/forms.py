@@ -20,3 +20,7 @@ class Post_form(FlaskForm):
     post_title=StringField('Enter the title of the post',validators=[Required()])
     post =TextAreaField('Enter your post',validators=[Required()])
     Submit=SubmitField('Submit Post')
+class Comments_form(FlaskForm):
+    username=StringField('Enter Your Name',validators=[Required()])
+    comment=TextAreaField('Leave a comment',validators=[Required()])
+    submit=SubmitField('Submit comment')
