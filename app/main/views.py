@@ -50,6 +50,6 @@ def blogs(id):
         return redirect(url_for('main.index'))
 
     posts=Post.query.filter_by(id=id).first()
-    comment=Comments.query.all()
+    comment=Comments.query.filter_by(id=id)
 
     return render_template("blogs/blog.html",posts=posts,comments_form=form,comment=comment)
