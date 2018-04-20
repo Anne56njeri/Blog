@@ -1,18 +1,26 @@
 {% import 'macros.html' as macro %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'base.html' %}
-
+{% block styles %}
+{{ super () }}
+ <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+ <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 <div class ="container">
   <div class="jumbotron">
-<h3>Hello welcome to the Personal Blog </h3>
-<p>The blog that allow you to comment on various posts</p>
+<h2 style="font-family:'Handlee', cursive;">Hello welcome to the Personal Blog </h2>
+<p style="font-family:'Handlee', cursive;" >The blog that allows you to comment on various posts</p>
 </div>
 </div>
+<div class="container">
+
 <ul>
   {{macro.displayPost(posts)}}
+
 </ul>
+</div>
 
 
 

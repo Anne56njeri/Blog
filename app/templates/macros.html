@@ -1,5 +1,6 @@
 {% macro displayPost(post_list) %}
   {% for post in post_list %}
+  <hr>
 
   <h3><a href="/blogs/{{post.id}}">{{post.post_title}}</a></h3>
   {% endfor %}
