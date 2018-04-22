@@ -34,6 +34,7 @@ def writers():
         posts=Post(username=form.username.data,post_title=form.post_title.data,post=form.post.data)
         db.session.add(posts)
         db.session.commit()
+        mail_message("Welcome to the trendy T's blog","email/welcome_user",subscriber.email,subscriber=subscriber)
         flash("succefully published")
         return redirect(url_for('main.index'))
 
@@ -56,4 +57,4 @@ def blogs(id):
     return render_template("blogs/blog.html",posts=posts,comments_form=form,comments=comments)
 @main.route('/admin',methods=["GET","POST"])
 def admin():
-    return render_template("admin/index.htmml")
+    return render_template("admin/index.html")
