@@ -1,8 +1,9 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from . import login_manager
+from . import login_manager,admin
 from datetime import datetime
+from flask_admin.contrib.sqla import ModelView
 
 class Writer(UserMixin,db.Model):
     __tablename__='writers'
@@ -50,4 +51,9 @@ class Comments(db.Model):
     username=db.Column(db.String(255))
     comment=db.Column(db.String)
     post_id =db.Column(db.Integer,db.ForeignKey('posts.id'))
-    
+    def __repr__(self):
+        return f'User {self.username}'
+admin.add_view(ModelView(Writer, db.session))
+admin.add_view(ModelView(Post, db.session))
+admin.add_view(ModelView(Comments,db.session))
+admin.add_view(ModelView(Subscribe,db.session))

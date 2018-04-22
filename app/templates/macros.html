@@ -6,10 +6,10 @@
   {% endfor %}
   {% endmacro %}
 
-  {% macro displayComments(posts) %}
-  {% for p in posts %}
+  {% macro displayComments(comments_list) %}
+  {% for comment in comments_list %}
   <div class="alert alert-warning">
-    <p>{{p.comments}}<p>
+    <p>{{comment.comment}}<p>
   </div>
     {% endfor %}
     {% endmacro %}

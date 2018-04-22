@@ -43,13 +43,13 @@ def blogs(id):
     form=Comments_form()
     posts=Post.query.get(id)
     if form.validate_on_submit():
-        comments=Comments(username=form.username.data,comment=form.comment.data)
+        comments=Comments(username=form.username.data,comment=form.comment.data,post_id=id)
         db.session.add(comments)
         db.session.commit()
         flash("comment added")
         return redirect(url_for('main.index'))
 
-    comments=Comments.query.with_parent(posts)
+    comments=Comments.query.filter_by(id=id).all()
 
 
 
