@@ -41,7 +41,7 @@ class Post(db.Model):
     post_title=db.Column(db.String(255))
     post_date=db.Column(db.DateTime,default=datetime.utcnow)
     post=db.Column(db.String)
-    comment_id =db.Column(db.Integer,db.ForeignKey('comments.id'))
+    comments=db.relationship('Comments',backref='post',lazy='dynamic')
     def __repr__(self):
         return f'Post{self.post_title}'
 class Comments(db.Model):
@@ -49,4 +49,5 @@ class Comments(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(255))
     comment=db.Column(db.String)
-    comments=db.relationship('Post',backref='comment',lazy="dynamic")
+    post_id =db.Column(db.Integer,db.ForeignKey('posts.id'))
+    

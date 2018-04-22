@@ -41,7 +41,7 @@ def writers():
 @main.route('/blogs/<int:id>',methods=["GET","POST"])
 def blogs(id):
     form=Comments_form()
-
+    posts=Post.query.get(id)
     if form.validate_on_submit():
         comments=Comments(username=form.username.data,comment=form.comment.data)
         db.session.add(comments)
@@ -49,7 +49,8 @@ def blogs(id):
         flash("comment added")
         return redirect(url_for('main.index'))
 
-    posts=Post.query.filter_by(id=id).first()
-    comment=Comments.query.filter_by(id=id)
+    comments=Comments.query.with_parent(posts)
 
-    return render_template("blogs/blog.html",posts=posts,comments_form=form,comment=comment)
+
+
+    return render_template("blogs/blog.html",posts=posts,comments_form=form,comments=comments)
