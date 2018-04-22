@@ -7,7 +7,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-
+from flask_uploads import UploadSet,configure_uploads,IMAGES
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -16,10 +16,11 @@ login_manager.session_protection='strong'
 login_manager.login_view='auth.login'
 mail=Mail()
 admin=Admin()
+photos =UploadSet('photos',IMAGES)
 def create_app(config_state):
     app = Flask(__name__)
     app.config.from_object(config_options[config_state])
-
+    configure_uploads(app,photos)
 
     bootstrap.init_app(app)
     db.init_app(app)

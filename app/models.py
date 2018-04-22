@@ -42,6 +42,7 @@ class Post(db.Model):
     post_title=db.Column(db.String(255))
     post_date=db.Column(db.DateTime,default=datetime.utcnow)
     post=db.Column(db.String)
+    profile_pic_path = db.Column(db.String())
     comments=db.relationship('Comments',backref='post',lazy='dynamic')
     def __repr__(self):
         return f'Post{self.post_title}'
