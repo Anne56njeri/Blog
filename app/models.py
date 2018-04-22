@@ -53,6 +53,9 @@ class Comments(db.Model):
     post_id =db.Column(db.Integer,db.ForeignKey('posts.id'))
     def __repr__(self):
         return f'User {self.username}'
+    '''
+    adding model views allows you to manage the models you have in the database
+    '''
 admin.add_view(ModelView(Writer, db.session))
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Comments,db.session))

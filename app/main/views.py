@@ -49,8 +49,11 @@ def blogs(id):
         flash("comment added")
         return redirect(url_for('main.index'))
 
-    comments=Comments.query.filter_by(id=id).all()
+    comments=Comments.query.filter_by(post_id=id).all()
 
 
 
     return render_template("blogs/blog.html",posts=posts,comments_form=form,comments=comments)
+@main.route('/admin',methods=["GET","POST"])
+def admin():
+    return render_template("admin/index.htmml")

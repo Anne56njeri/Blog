@@ -30,7 +30,7 @@ def login():
         writer=Writer.query.filter_by(email = login_form.email.data).first()
         if writer is not None and writer.verify_password(login_form.password.data):
             login_user(writer,login_form.remember.data)
-            return  redirect(url_for('main.writers'))
+            return  redirect(url_for('main.admin'))
         flash('Invalid username or password')
     title ="Blog login"
     return render_template('auth/login.html',login_form=login_form,title=title)
