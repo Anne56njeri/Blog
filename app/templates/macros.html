@@ -11,8 +11,8 @@
       {% endif %}
       <hr>
       <div class="caption">
-      <h3><a href="/blogs/{{post.id}}"style="color:black;">Title:{{post.post_title}}</a></h3>
-
+      <h3 style="font-family: 'Playfair Display', serif;"><a href="/blogs/{{post.id}}"style="color:black;">Title:{{post.post_title}}</a></h3>
+      <p style="font-family: 'Playfair Display', serif;"><b>Description:</b>{{post.post |truncate(100)}}</p>
       </div>
     </div>
     <br>
