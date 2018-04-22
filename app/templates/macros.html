@@ -1,21 +1,26 @@
 {% macro displayPost(post_list) %}
   {% for post in post_list %}
-  
+
 
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="..." alt="...">
+      {%if post.profile_pic_path %}
+      <img src="{{url_for('static',filename=post.profile_pic_path)}}" alt="..."><br>
+      {%else%}
+      <p>no profile</p>
+      {% endif %}
+      <hr>
       <div class="caption">
-        <h3>Thumbnail label</h3>
+      <h3><a href="/blogs/{{post.id}}"style="color:black;">Title:{{post.post_title}}</a></h3>
 
-        <p><a href="/blogs/{{post.id}}">{{post.post_title}}</a></p>
       </div>
     </div>
+    <br>
   </div>
 
 
 
-  <h3><a href="/blogs/{{post.id}}">{{post.post_title}}</a></h3>
+
   {% endfor %}
   {% endmacro %}
 
