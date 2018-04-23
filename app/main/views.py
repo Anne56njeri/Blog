@@ -34,7 +34,7 @@ def writers():
         posts=Post(username=form.username.data,post_title=form.post_title.data,post=form.post.data)
         db.session.add(posts)
         db.session.commit()
-        
+
         flash("succefully published")
         return redirect(url_for('main.index'))
     post=Post.query.all()
@@ -47,7 +47,7 @@ def writers():
 @main.route('/blogs/<int:id>',methods=["GET","POST"])
 def blogs(id):
     form=Comments_form()
-    posts=Post.query.get(id)
+    posts=Post.query.filter_by(id=id).first()
 
 
     if form.validate_on_submit():
