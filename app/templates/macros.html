@@ -27,7 +27,12 @@
   {% macro displayComments(comments_list) %}
   {% for comment in comments_list %}
   <div class="alert alert-warning">
-    <p>{{comment.comment}}<p>
+    <nav aria-label="...">
+  <ul class="pager">
+    <li class="previous disabled"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{comment.username}}</a></li>
+  </ul>
+</nav>
+    <p style="font-family: 'Playfair Display', serif;">{{comment.comment}}<p>
   </div>
     {% endfor %}
     {% endmacro %}
