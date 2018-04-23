@@ -8,22 +8,22 @@ Maryanne Njeri
 
 
 ## Project setup instructions:
-Install Flask and Python 3.6
+- Install Flask and Python 3.6
 
-Git clone repo then you will need to install venv that is a virtual enviroment and run source virtual/bin/activate
+- Git clone repo then you will need to install venv that is a  virtual enviroment and run source virtual/bin/activate
 
 
-open http://127.0.0.1:5000/ on your browser to view on the localhost
-click the link below to view the deployed app  
+- open http://127.0.0.1:5000/ on your browser to view on the localhost
+- click the link below to view the deployed app  
 https://trendyt.herokuapp.com/
 
 
 ## Technology used:
-Python3.6
-Flask (micro framework for python)
-Bootstrap 3
-HTML5/CSS
-postgresql
+- Python3.6
+- Flask (micro framework for python)
+- Bootstrap 3
+- HTML5/CSS
+- postgresql
 
 
 
