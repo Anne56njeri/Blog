@@ -1,3 +1,12 @@
+## Personal Blog
+An application created using Flask (microframe work for python)
+
+## Author name
+Maryanne Njeri
+
+
+
+
 ## Project setup instructions:
 Install Flask and Python 3.6
 
