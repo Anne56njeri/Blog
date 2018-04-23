@@ -6,11 +6,11 @@
 <div class ="container">
   <div class="row">
     <div class="col-md-8">
-     
-  <h2><b> Title:</b> {{posts.post_title}}</h2>
-  <p><b>Author:</b> {{posts.username}}</p>
-  <p><b>Blog Post:</b> {{posts.post}}</p>
-  <p><b>Date:</b> {{posts.post_date}}</p>
+
+  <h2 style="font-family: 'Playfair Display', serif;"><b> Title:</b> {{posts.post_title}}</h2>
+  <h3 style="font-family: 'Playfair Display', serif;"><b>Author:</b> {{posts.username}}</h3>
+  <p style="font-family: 'Playfair Display', serif;"><b>Blog Post:</b> {{posts.post}}</p>
+  <p style="font-family: 'Playfair Display', serif;"><b>Date:</b> {{posts.post_date}}</p>
 
   <h3>Comments</h3>
   {{macro.displayComments(comments)}}
